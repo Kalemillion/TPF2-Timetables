@@ -1,8 +1,8 @@
 function data()
     return {
         info = {
-            name           = _("mod_name_i18n"),
-            description    = _("mod_description_i18n"),
+            name           = _("modname_name"),
+            description    = _("modname_desc"),
             authors        = {
                 { name = "Kalemillion", role = "CREATOR",         tfnetId = "" },
                 { name = "ConstasJ",    role = "BASED_ON (v1.5)", tfnetId = "" },

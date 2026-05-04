@@ -1,44 +1,44 @@
 # Timetables 1.6 — README
 
-Présentation
-- Module Transport Fever 2 fournissant une gestion avancée de grilles horaires (timetables) pour lignes et véhicules.
-- Objectif : offrir des contraintes de départ/arrivée, des stratégies de debounce et d'auto-debounce, et une interface GUI pour gérer les horaires en jeu.
+Overview
+- A Transport Fever 2 mod that provides advanced timetable management for lines and vehicles.
+- The goal is to offer departure/arrival constraints, debounce and auto-debounce strategies, and a GUI for managing timetables in game.
 
-Prérequis et compatibilité
-- Transport Fever 2 (version compatible avec les mods scriptés).
-- Installer le dossier du mod dans le répertoire mods de TF2 (voir Instructions d'installation).
-- Version du mod : v1.6 (minorVersion = 6). Conçu pour être rétrocompatible avec les formats de timetable hérités ; sauvegardez vos parties avant test.
+Requirements and Compatibility
+- Transport Fever 2 (a version compatible with scripted mods).
+- Install the mod folder into the TF2 mods directory (see Installation Instructions).
+- Mod version: v1.6 (minorVersion = 6). Designed to remain backward compatible with legacy timetable formats; back up your saves before testing.
 
-Fichiers clés (références)
-- mod.lua — métadonnées du mod et version.
-- res/config/game_script/timetable_gui.lua — code de l'interface utilisateur et intégration GUI.
-- res/scripts/timetable.lua — logique centrale des timetables (ArrDep, debounce, cache, etc.).
-- tests/timetable_fusion_tests.lua — tests unitaires locaux ajoutés pour non-régression.
-- docs/CHANGELOG.md — notes de release v1.6.
+Key Files (References)
+- mod.lua — mod metadata and version.
+- res/config/game_script/timetable_gui.lua — user interface code and GUI integration.
+- res/scripts/timetable.lua — core timetable logic (ArrDep, debounce, cache, etc.).
+- tests/timetable_fusion_tests.lua — local unit tests added for regression coverage.
+- docs/CHANGELOG.md — release notes for v1.6.
 
 
-Fonctionnalités disponibles (ce qui est implémenté)
-- ArrDep : contraintes d'arrivée/départ (ArrDep) avec gestion des véhicules en attente.
-- Debounce : mécanisme de délai (debounce) pour regrouper ou séparer départs selon règles configurées.
-- Auto-debounce : variante automatique liée à la fréquence de la ligne.
-- GUI : interface pour visualiser/éditer timetables, déclencher envois d'événements et initialiser le cache des lignes avec timetable.
-- Cache des lignes : `timetable.initializeTimetableLinesCache()` et API associées pour gestion interne des lignes actives.
+Available Features (Implemented)
+- ArrDep: arrival/departure constraints (ArrDep) with support for waiting vehicles.
+- Debounce: a delay mechanism used to group or separate departures according to configured rules.
+- Auto-debounce: an automatic variant tied to line frequency.
+- GUI: interface for viewing/editing timetables, triggering event dispatches, and initializing the timetable line cache.
+- Line cache: `timetable.initializeTimetableLinesCache()` and related APIs for internal management of active lines.
 
-Notes de compatibilité ascendante
-- Le code effectue une normalisation des payloads de timetable à la charge :
-  - conversions d'IDs fournis en string → nombres (si applicable).
-  - migration automatique du champ legacy `conditions.condition` → `conditions.type`.
-  - initialisation défensive des champs manquants (`stations`, `ArrDep`, `vehiclesWaiting`).
-- Recommandation : faire une sauvegarde du dossier mods et des saves avant tester la mise à jour en production.
+Backward Compatibility Notes
+- The code normalizes timetable payloads on load:
+  - converts IDs provided as strings to numbers (if applicable).
+  - automatically migrates the legacy `conditions.condition` field to `conditions.type`.
+  - defensively initializes missing fields (`stations`, `ArrDep`, `vehiclesWaiting`).
+- Recommendation: back up the mods folder and your saves before testing the update in production.
 
-Usage rapide (déclencher / vérifier)
-- Ouvrir l'interface définie dans res/config/game_script/timetable_gui.lua pour éditer et appliquer les timetables.
-- Les changements dans l'UI déclenchent `timetable.setTimetableObject(...)` et posent le flag `timetableChanged` pour envoi d'événements GUI.
-- Les cas de départ automatique sont gérés dans res/scripts/timetable.lua (fonctions `departIfReady`, `readyToDepartArrDep`, `readyToDepartDebounce`, etc.).
+Quick Usage (Trigger / Verify)
+- Open the interface defined in res/config/game_script/timetable_gui.lua to edit and apply timetables.
+- Changes in the UI trigger `timetable.setTimetableObject(...)` and set the `timetableChanged` flag for GUI event dispatch.
+- Automatic departure cases are handled in res/scripts/timetable.lua (functions `departIfReady`, `readyToDepartArrDep`, `readyToDepartDebounce`, etc.).
 
-Tests et validation locale
-- Un fichier de tests unitaires est présent : tests/timetable_fusion_tests.lua. Il couvre non-régression pour : nettoyage vehiclesWaiting, initialisation du cache des lignes, comportement GUI basique et hardening des payloads.
-- Les tests sont conçus pour être exécutés dans l’environnement TF2 (en jeu) ou via un runtime Lua compatible si vous avez l’environnement de test hors-jeu.
+Tests and Local Validation
+- A unit test file is included: tests/timetable_fusion_tests.lua. It covers regression cases for: vehiclesWaiting cleanup, line cache initialization, basic GUI behavior, and payload hardening.
+- The tests are intended to run in the TF2 environment (in game) or through a compatible Lua runtime if you have an out-of-game test environment.
 
-Support / signalement de bugs
-- Ouvrir une issue sur le dépôt/fork que vous utilisez, en joignant : version du mod (mod.lua), brève description, étapes pour reproduire, et logs console si possible.
+Support / Bug Reports
+- Open an issue on the repository/fork you are using, and include: mod version (mod.lua), a short description, reproduction steps, and console logs if possible.
