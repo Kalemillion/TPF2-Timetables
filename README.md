@@ -1,46 +1,44 @@
-# TPF2-Timetables
-## Overview
-This is a mod for Transport Fever 2 that adds a timetable system to the game. It allows you to specify when a vehicle should stop at a station and when it should depart. This is useful for creating realistic schedules for your trains, buses and other vehicles.
+# Timetables 1.6 — README
 
-For every stop you can choose between three modes:
-- **None**: The vehicle will use the vanilla logic, i.e. it will stop, wait for loading to complete, sometimes wait a bit extra for unbunching and then depart.
-- **Arrival/Departure**: The vehicle will stop at the station and depart only at the next specified departure time. It chooses the last slot with a departure time after the last recorded departure and an arrival time in the past.
-- **Unbunch**: The vehicle will depart no sooner than the specified time span after the last recorded departure for that line and station.
-- **AutoUnbunch**: The vehicle departures will be spaced out by the frequency of the line. The associate time is the "give" in the system and allows for delays in and between stations. I would recommend a minimum value of 1 minute but this should be increased to 2 or even 3 minutes for less frequent or more delayed routes.
+Présentation
+- Module Transport Fever 2 fournissant une gestion avancée de grilles horaires (timetables) pour lignes et véhicules.
+- Objectif : offrir des contraintes de départ/arrivée, des stratégies de debounce et d'auto-debounce, et une interface GUI pour gérer les horaires en jeu.
 
-More technical information can be found in the [documentation](documentation.md).
+Prérequis et compatibilité
+- Transport Fever 2 (version compatible avec les mods scriptés).
+- Installer le dossier du mod dans le répertoire mods de TF2 (voir Instructions d'installation).
+- Version du mod : v1.6 (minorVersion = 6). Conçu pour être rétrocompatible avec les formats de timetable hérités ; sauvegardez vos parties avant test.
 
-## The Current State of the Project
-This mod has already been released on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2408373260) by it's original Creator, [@IncredibleHannes](https://github.com/IncredibleHannes/TPF2-Timetables). Unfortunately that release is from March 2021, and a few things have changed in the game since then. 
+Fichiers clés (références)
+- mod.lua — métadonnées du mod et version.
+- res/config/game_script/timetable_gui.lua — code de l'interface utilisateur et intégration GUI.
+- res/scripts/timetable.lua — logique centrale des timetables (ArrDep, debounce, cache, etc.).
+- tests/timetable_fusion_tests.lua — tests unitaires locaux ajoutés pour non-régression.
+- docs/CHANGELOG.md — notes de release v1.6.
 
-Additionally, changes have been made to the mod by several people that were never released. Those people include me [@Gregory365](https://github.com/Gregory365/TPF2-Timetables), [@quittung](https://github.com/quittung/TPF2-Timetables), [@IncredibleHannes](https://github.com/IncredibleHannes/TPF2-Timetables), and others.
 
-My aim with this fork is to compile the changes that make sense, rework the code to improve reliability and maintainability, add documentation and eventually release a new version of the mod on the Steam Workshop.
+Fonctionnalités disponibles (ce qui est implémenté)
+- ArrDep : contraintes d'arrivée/départ (ArrDep) avec gestion des véhicules en attente.
+- Debounce : mécanisme de délai (debounce) pour regrouper ou séparer départs selon règles configurées.
+- Auto-debounce : variante automatique liée à la fréquence de la ligne.
+- GUI : interface pour visualiser/éditer timetables, déclencher envois d'événements et initialiser le cache des lignes avec timetable.
+- Cache des lignes : `timetable.initializeTimetableLinesCache()` et API associées pour gestion interne des lignes actives.
 
-## New Features this version brings
-- Support for multiple vehicles at the same station (no two vehicles can pick the same time slot)
-- Use nearest arrival time to calculate a vehicles intended departure time
-- Remember the state of vehicles after a save-load cycle so not to always depart immediately
-- **AutoUnbunch**: space out vehicles by the frequency of the line
-- Improved performance
-- Updated timetable colours to support Spring Update line colours
-- Minimum wait time is supported
-- Maximum wait time can be support (enable first is mod settings)
+Notes de compatibilité ascendante
+- Le code effectue une normalisation des payloads de timetable à la charge :
+  - conversions d'IDs fournis en string → nombres (si applicable).
+  - migration automatique du champ legacy `conditions.condition` → `conditions.type`.
+  - initialisation défensive des champs manquants (`stations`, `ArrDep`, `vehiclesWaiting`).
+- Recommandation : faire une sauvegarde du dossier mods et des saves avant tester la mise à jour en production.
 
-## Breaking changes
-- Timetables can be transfered from the old version (but not back again)
-- Use *nearest* arrival time instead of *next* arrival time to calculate a vehicles intended departure time
+Usage rapide (déclencher / vérifier)
+- Ouvrir l'interface définie dans res/config/game_script/timetable_gui.lua pour éditer et appliquer les timetables.
+- Les changements dans l'UI déclenchent `timetable.setTimetableObject(...)` et posent le flag `timetableChanged` pour envoi d'événements GUI.
+- Les cas de départ automatique sont gérés dans res/scripts/timetable.lua (fonctions `departIfReady`, `readyToDepartArrDep`, `readyToDepartDebounce`, etc.).
 
-## Installing the Mod without Steam
-First get the files by pressing the green "Code" button on the top right of the page and then "Download ZIP". Then extract the files to your mods folder. The mods folder is located in your Transport Fever 2 folder. On Windows it is usually `C:\Program Files (x86)\Steam\steamapps\common\Transport Fever 2\mods`. 
+Tests et validation locale
+- Un fichier de tests unitaires est présent : tests/timetable_fusion_tests.lua. Il couvre non-régression pour : nettoyage vehiclesWaiting, initialisation du cache des lignes, comportement GUI basique et hardening des payloads.
+- Les tests sont conçus pour être exécutés dans l’environnement TF2 (en jeu) ou via un runtime Lua compatible si vous avez l’environnement de test hors-jeu.
 
-When you're done, there should be a folder names `TPF2-Timetables` in your mods folder. Inside that folder there should be a file named `mod.lua`. TPF2 should now detect the mod and complain about the mod format being deprecated. You can ignore that warning.
-
-If someone knows how to install the mod without that warning, please let me know.
-
-## How to Contribute
-Found a bug? Have an idea for a new feature? Want to help with the documentation? Please open an issue or a pull request. I'm happy to help and answer questions.
-
-If you want to actively develop, fork this repo, make your changes and create a pull request. I'll review it and merge it if it looks good and fits in with the rest of the mod. If you want to discuss your changes before you start working on them, please open an issue or contact me on Discord (Gregory365#5262).
-
-There is a [Discord server](https://discord.gg/7KbVP8Fr6Z) for this mod that was created by the orginal creator. You can use it to discuss the mod, ask questions or just hang out.
+Support / signalement de bugs
+- Ouvrir une issue sur le dépôt/fork que vous utilisez, en joignant : version du mod (mod.lua), brève description, étapes pour reproduire, et logs console si possible.
