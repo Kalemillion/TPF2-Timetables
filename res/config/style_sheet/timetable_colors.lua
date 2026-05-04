@@ -1,8 +1,6 @@
+
 require "tableutil"
 local ssu = require "stylesheetutil"
-
--- extract colors with common api, default ingame console seems to output always the default colors!?
--- for _, c in ipairs(game.config.gui.lineColors) do; print("{" .. c[1] .. ", "  .. c[2] .. ", "  .. c[3] .. "}"); end;
 
 local defaultColors = {
     {0.36862745098039, 0.1843137254902, 0},
@@ -57,7 +55,6 @@ local defaultColors = {
     {0.83137254901961, 0.77254901960784, 0.68235294117647}
 }
 
--- https://steamcommunity.com/sharedfiles/filedetails/?id=2033800555
 local marc345 = {
     {0.50196078431373, 0, 0},
     {0.50196078431373, 0.16470588235294, 0},
@@ -161,7 +158,6 @@ local marc345 = {
     {0, 0, 0}
 }
 
--- https://steamcommunity.com/sharedfiles/filedetails/?id=2047925018
 local mediziner = {
     {1, 1, 0},
     {1, 0.75294117647059, 0},
@@ -279,8 +275,6 @@ local availableColorSchemes = {
     defaultColors, marc345, mediziner
 }
 
--- copied from timetable_helper.lua, import is not possible
--- if you change it here, also change it there!
 local function getColorString(r, g, b)
     local x = string.format("%03.0f", (r * 100))
     local y = string.format("%03.0f", (g * 100))
@@ -289,16 +283,16 @@ local function getColorString(r, g, b)
 end
 
 function data()
-    local result = { }
-    local lookup = { }
+    local result = {}
+    local lookup = {}
 
-    local a = ssu.makeAdder(result)          -- helper function
+    local a = ssu.makeAdder(result)
 
     for _, schema in ipairs(availableColorSchemes) do
         for _, color in ipairs(schema) do
             local colorString = getColorString(color[1], color[2], color[3])
+
             if not lookup[colorString] then
-                -- It is possible that a color is part of two color mods, but we only need one style for it.
                 lookup[colorString] = true
 
                 local colorArray = {color[1], color[2], color[3], 1}
