@@ -2,7 +2,7 @@
 
 ## ConstasJ's v1.5 => Kalemillion's v1.6
 
-Compared to v1.5, this release is a structural refactor of the mod rather than a narrow feature patch. The runtime now uses canonical module paths, the timetable core is hardened against malformed payloads and legacy data, the GUI contract is safer and more responsive, the helper layer is split into smaller units, and the test suite is consolidated around a single regression file.
+Compared to v1.5, this release is a structural refactor of the mod rather than a narrow feature patch. The runtime now uses canonical module paths, the timetable core is hardened against malformed payloads and legacy data, the GUI contract is safer and more responsive, and the helper layer is split into smaller units.
 
 ### 🚀 Features
 - Added a canonical runtime layout under [res/scripts](../res/scripts) and removed the older namespaced `celmi/timetables` path used by the workshop build.
@@ -11,7 +11,6 @@ Compared to v1.5, this release is a structural refactor of the mod rather than a
 - Added the helper submodules under [res/scripts/helper](../res/scripts/helper) for core utilities, display helpers, engine access, and collection helpers.
 - Expanded [res/scripts/timetable.lua](../res/scripts/timetable.lua) with explicit cache management, runtime normalization, and structured departure handling.
 - Added a richer GUI contract in [res/config/game_script/timetable_gui.lua](../res/config/game_script/timetable_gui.lua), including deferred refresh handling and safer event processing.
-- Added [tests/timetable_fusion_tests.lua](../tests/timetable_fusion_tests.lua) as the new consolidated regression file for the merged runtime and GUI behavior.
 - Expanded [strings.lua](../strings.lua) with many additional language entries and regional variants.
 - Updated [mod.lua](../mod.lua) so the mod title and description now resolve through `modname_name` and `modname_desc`.
 

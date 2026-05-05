@@ -121,18 +121,6 @@ Important public functions include:
 - The GUI also preserves scroll position when rebuilding the line and station tables.
 - Row-to-id mapping is maintained explicitly so visible ordering does not depend on incidental table iteration order.
 
-## Testing
-- The current regression coverage lives in [tests/timetable_fusion_tests.lua](../tests/timetable_fusion_tests.lua).
-- The tests use mocked TF2 runtime modules via `package.loaded` to keep runtime dependencies isolated.
-- Coverage currently includes:
-  - ArrDep departure cleanup,
-  - timetable cache initialization,
-  - GUI event flow and `guiUpdate` dispatch,
-  - load-time cache initialization,
-  - malformed payload hardening,
-  - legacy condition migration,
-  - string-key normalization for line and station ids.
-
 ## Implementation Notes
 - Avoid adding direct TF2 API calls outside `timetable_helper` unless the code is specifically GUI-facing.
 - Keep the GUI reactive and lightweight. When the GUI needs more information, prefer adding a public runtime API over duplicating logic in the UI layer.

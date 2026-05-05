@@ -38,7 +38,7 @@ return {
 			- Unbunch: Set a time and vehicles will only depart the station in the given interval
 		]],
 		["modname_name"] = "Timetables",
-		["modname_desc"] = "This mod adds timetables to the game",
+		["modname_desc"] = "Create detailed timetables and schedule your vehicles. Control departures, arrivals, and regulate service frequency with advanced unbunching.",
 	},
 	es = {
 		["arr_i18n"] = "Lle: ",
@@ -74,7 +74,7 @@ return {
 			- Distanciamiento: Establezca un intervalo de tiempo para que los vehículos salgan en ese intervalo
 		]],
 		["modname_name"] = "Horarios",
-		["modname_desc"] = "Este mod agrega horarios al juego",
+		["modname_desc"] = "Crea horarios detallados y programa tus vehículos. Controla salidas, llegadas y regula la frecuencia de servicio con espaciado avanzado.",
 	},
 	fr = {
 		["arr_i18n"] = "Arr:",
@@ -110,7 +110,7 @@ return {
 			- Regulation: Les trains partiront tous les x temps selon un intervalle de temps défini.
 		]],
 		["modname_name"] = "Fréquence / Horaire",
-		["modname_desc"] = "Ce mod ajoute les gestion des horaires et de la fréquence de passage dans le jeu.",
+		["modname_desc"] = "Créez des horaires détaillés et programmez vos véhicules. Contrôlez précisément les départs et arrivées, réglez la fréquence de passage et équilibrez vos services avec une régulation avancée.",
 	},
 	nl = {
 		["arr_i18n"] = "Arr: ",
@@ -146,7 +146,7 @@ return {
 			- Spreiding: Stel een tijd in waarna voertuigen het station met dat interval verlaten
 		]],
 		["modname_name"] = "Dienstregelingen",
-		["modname_desc"] = "Deze mod voegt dienstregelingen toe aan het spel",
+		["modname_desc"] = "Maak gedetailleerde dienstregelingen en programmeer uw voertuigen. Controleer vertrekken, aankomsten en regelmatigheid met geavanceerde spreiding.",
 	},
 	pt_BR = {
 		-- in WE Europe cuz' it'd seem lonely in "Others/South America"
@@ -183,7 +183,7 @@ return {
 			- Espaçamento: define um intervalo para evitar que os veículos saiam juntos
 		]],
 		["modname_name"] = "Horários",
-		["modname_desc"] = "Este mod adiciona gerenciamento de horários ao jogo.",
+		["modname_desc"] = "Crie horários detalhados e programe seus veículos. Controle partidas, chegadas e frequência de serviço com espaçamento avançado.",
 	},
 
 	-- Central & Eastern Europe
@@ -221,7 +221,7 @@ return {
             - Regulace: Nastavte časový interval, ve kterém budou vozidla opouštět stanici.
         ]],
         ["modname_name"] = "Jízdní řády",
-        ["modname_desc"] = "Tento mod přidává do hry jízdní řády.",
+        ["modname_desc"] = "Vytvářejte podrobné jízdní řády a plánujte své vozidla. Kontrolujte odjezdy, příjezdy a frekvenci služeb s pokročilou regulací.",
     },
 	de = {
 		["arr_i18n"] = "Ank: ",
@@ -257,7 +257,7 @@ return {
 			- Regulierung: Ein Intervall festlegen; Fahrzeuge fahren nur in diesem Zeitabstand ab.
 		]],
 		["modname_name"] = "Takt / Fahrplan",
-		["modname_desc"] = "Diese Mod fügt dem Spiel Fahrpläne und Taktsteuerung hinzu.",
+		["modname_desc"] = "Erstellen Sie detaillierte Fahrpläne und planen Sie Ihre Fahrzeuge. Kontrollieren Sie Ab- und Anfahrtszeiten sowie Bedienungshäufigkeit mit erweiterte Regelmäßigkeit.",
 	},
 	it = {
 		["arr_i18n"] = "Arr: ",
@@ -293,7 +293,7 @@ return {
 			- Distanziamento: imposta un intervallo affinché i veicoli partano dalla stazione a cadenza regolare
 		]],
 		["modname_name"] = "Orari",
-		["modname_desc"] = "Questa mod aggiunge gli orari al gioco.",
+		["modname_desc"] = "Crea orari dettagliati e pianifica i tuoi veicoli. Controlla partenze, arrivi e frequenza del servizio con spaziamento avanzato.",
 	},
 	pl = {
 		["arr_i18n"] = "Przyj: ",
@@ -329,7 +329,7 @@ return {
 			- Regulacja: Ustaw czas, aby pojazdy opuszczały stację w ustalonych interwałach
 		]],
 		["modname_name"] = "Rozkład jazdy",
-		["modname_desc"] = "Ten mod dodaje rozkład jazdy do gry",
+		["modname_desc"] = "Twórz szczegółowe rozkłady i planuj pojazdy. Kontroluj odjazdy, przyjazdy i częstotliwość usług z zaawansowaną regulacją.",
 	},
 	uk = {
         ["arr_i18n"] = "Приб: ",
@@ -397,7 +397,7 @@ return {
 			- Интервал: настройте время и транспорт будет отправляться со станции согласно выбранному интервалу
 		]],
 		["modname_name"] = "Расписание",
-		["modname_desc"] = "Этот мод добавляет в игру расписание.",
+		["modname_desc"] = "Создавайте подробные расписания и планируйте свои транспортные средства. Управляйте отправлениями и прибытиями, регулируйте частоту обслуживания с расширенным интервалом.",
 	},
 
 	-- Asia
@@ -435,7 +435,7 @@ return {
 			- 間隔制御：時間間隔を設定すると、車両がその間隔で駅を出発します
 		]],
 		["modname_name"] = "時刻表",
-		["modname_desc"] = "このmodはゲームに時刻表を追加します",
+		["modname_desc"] = "詳細な時刻表を作成し、乗り物をスケジュール化します。出発と到着を制御し、高度な間隔制御でサービス頻度を調整します。",
 	},
 	ko = {
 		["arr_i18n"] = "도: ",
@@ -507,7 +507,7 @@ return {
             - Düzenleme: Bir süre belirleyin, araçlar istasyondan sadece bu aralıkla kalkacaktır.
         ]],
         ["modname_name"] = "Zaman Çizelgeleri",
-        ["modname_desc"] = "Bu mod oyuna zaman çizelgeleri (tarifeler) ekler.",
+        ["modname_desc"] = "Ayrıntılı zaman çizelgeleri oluşturun ve araçlarınızı planlayın. Kalkışları ve varışları kontrol edin, gelişmiş aralık ayarlamasıyla hizmet sıklığını düzenleyin.",
     },
 	zh_CN = {
 		["arr_i18n"] = "到: ",
@@ -542,7 +542,7 @@ return {
 			- 间隔控制：设定时间长度，载具以给定间隔发车
 		]],
 		["modname_name"] = "时刻表",
-		["modname_desc"] = "本模组为游戏添加时刻表系统",
+		["modname_desc"] = "创建详细的时刻表并计划您的车辆。控制出发和到达，使用高级间隔控制调整服务频率。",
 	},
 	zh_TW = {
 		["arr_i18n"] = "到: ",
@@ -577,7 +577,7 @@ return {
 			- 間隔控制：設定時間長度，載具以給定間隔發車
 		]],
 		["modname_name"] = "時刻表",
-		["modname_desc"] = "本模組爲遊戲添加時刻表系統",
+		["modname_desc"] = "建立詳細時刻表並規劃車輛。控制出發和到達時間，通過高級間隔控制調整服務頻率。",
 	}
 }
 end
